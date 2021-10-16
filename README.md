@@ -4,6 +4,8 @@
 
 This repo contains examples on how to use JSCodeShift in combination with TypeScript and JSX. Test it with Jest and generate scaffolding for new transform with [PlopJS](https://github.com/plopjs/plop).
 
+[ASTExplorer](https://astexplorer.net/) is a great tool for exploring how the AST looks like. (set parser to `@typescript-eslint/parser` instead of `acorn` to enable JSX and TypeScript)
+
 ## Get started
 
 Clone the repo and install dependencies
