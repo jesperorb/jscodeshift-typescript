@@ -1,0 +1,12 @@
+import { Options, FileInfo, API } from 'jscodeshift';
+import { defaultSourceConfig } from '../../config';
+
+export default function transform(
+  file: FileInfo,
+  { jscodeshift }: API,
+  options: Options
+) {
+  const j = jscodeshift;
+  return j(file.source)
+    .toSource(defaultSourceConfig);
+}
