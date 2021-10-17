@@ -1,5 +1,9 @@
 {
   "name": "jscodeshift",
+  "author": {
+    "name": "Jesper Orb",
+    "email": "github@jesperorb.com"
+  },
   "private": true,
   "version": "1.0.0",
   "main": "index.js",
