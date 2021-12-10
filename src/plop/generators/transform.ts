@@ -10,7 +10,7 @@ export const transformGenerator: PlopGeneratorConfig = {
     },
     {
       type: 'list',
-      name: 'Parser',
+      name: 'parser',
       choices: ['tsx', 'ts'],
     },
   ],
@@ -24,7 +24,7 @@ export const transformGenerator: PlopGeneratorConfig = {
     {
       type: 'add',
       skipIfExists: true,
-      path: '../transforms/{{name}}/__tests__/{{name}}.test.{{parser}}',
+      path: '../transforms/{{name}}/__tests__/{{name}}.test.ts',
       templateFile: 'templates/testfile.hbs',
     },
     {
