@@ -3,7 +3,17 @@ import {
   Identifier,
   ObjectProperty,
   JSXAttribute,
-} from 'jscodeshift'
+} from 'jscodeshift';
+
+/**
+ * Extending the default collection so that TypeScript is satisfied
+ */
+declare module 'jscodeshift/src/Collection' {
+  interface Collection<N> {
+    findJSXElementProperty: typeof customCollectionMethods.findJSXElementProperty;
+    findObjectPropertiesByName: typeof customCollectionMethods.findObjectPropertiesByName;
+  }
+}
 
 /**
  * Helper methods that can be used but types are not detected
@@ -20,15 +30,15 @@ export const customCollectionMethods = {
         type: 'JSXIdentifier',
         name: property,
       },
-    })
+    });
   },
   findObjectPropertiesByName: function (
     this: Collection<any>,
     propertyName: string
   ): Collection<ObjectProperty> {
     return this.find(ObjectProperty).filter((node) => {
-      const prop = node.value.key as Identifier
-      return prop.name === propertyName
-    })
+      const prop = node.value.key as Identifier;
+      return prop.name === propertyName;
+    });
   },
-}
+};
