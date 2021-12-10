@@ -34,11 +34,11 @@ export const customCollectionMethods = {
   },
   findObjectPropertiesByName: function (
     this: Collection<any>,
-    propertyName: string
+    propertyNames: string[]
   ): Collection<ObjectProperty> {
     return this.find(ObjectProperty).filter((node) => {
       const prop = node.value.key as Identifier;
-      return prop.name === propertyName;
+      return propertyNames.includes(prop.name);
     });
   },
 };
