@@ -15,10 +15,6 @@ declare module 'jscodeshift/src/Collection' {
   }
 }
 
-/**
- * Helper methods that can be used but types are not detected
- * by 'j.registerMethods' so they will error in typescript.
- */
 export const customCollectionMethods = {
   findJSXElementProperty: function (
     this: Collection<any>,
