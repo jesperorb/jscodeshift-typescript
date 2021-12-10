@@ -8,6 +8,11 @@ export const transformGenerator: PlopGeneratorConfig = {
       name: 'name',
       message: 'Input name of transform',
     },
+    {
+      type: 'list',
+      name: 'Parser',
+      choices: ['tsx', 'ts'],
+    },
   ],
   actions: [
     {
@@ -19,18 +24,18 @@ export const transformGenerator: PlopGeneratorConfig = {
     {
       type: 'add',
       skipIfExists: true,
-      path: '../transforms/{{name}}/__tests__/{{name}}.test.ts',
+      path: '../transforms/{{name}}/__tests__/{{name}}.test.{{parser}}',
       templateFile: 'templates/testfile.hbs',
     },
     {
       type: 'add',
       skipIfExists: true,
-      path: '../transforms/{{name}}/__testfixtures__/default.input.tsx',
+      path: '../transforms/{{name}}/__testfixtures__/default.input.{{parser}}',
     },
     {
       type: 'add',
       skipIfExists: true,
-      path: '../transforms/{{name}}/__testfixtures__/default.output.tsx',
+      path: '../transforms/{{name}}/__testfixtures__/default.output.{{parser}}',
     },
   ],
 };
