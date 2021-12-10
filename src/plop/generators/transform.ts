@@ -14,13 +14,13 @@ export const transformGenerator: PlopGeneratorConfig = {
       type: 'add',
       skipIfExists: true,
       path: '../transforms/{{name}}/{{name}}.ts',
-      templateFile: 'templates/transform.hbs'
+      templateFile: 'templates/transform.hbs',
     },
     {
       type: 'add',
       skipIfExists: true,
       path: '../transforms/{{name}}/__tests__/{{name}}.test.ts',
-      templateFile: 'templates/testfile.hbs'
+      templateFile: 'templates/testfile.hbs',
     },
     {
       type: 'add',

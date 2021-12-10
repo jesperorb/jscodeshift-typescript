@@ -8,7 +8,7 @@ defineTest(
     property: 'onClick',
   },
   // this matches with '__testfixtures__/remove-jsx-prop/default.{input,output}.tsx'
-  'remove-jsx-prop/default',
+  'default',
   {
     parser: 'tsx',
   }
@@ -22,7 +22,7 @@ defineTest(
     property: 'lang',
   },
   // this matches with '__testfixtures__/remove-jsx-prop/multiline.{input,output}.tsx'
-  'remove-jsx-prop/multiline',
+  'multiline',
   {
     parser: 'tsx',
   }

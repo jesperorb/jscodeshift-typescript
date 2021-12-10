@@ -1,5 +1,6 @@
 import { Options, FileInfo, API } from 'jscodeshift';
 import { defaultSourceConfig } from '../../config';
+import { registerCustomMethods } from '../../plugins';
 import { RemovePropertyOptions } from '../../types/options';
 
 /**
@@ -15,23 +16,20 @@ export default function transform(
 ) {
   // Saving for shorthand, less to write further down
   const j = jscodeshift;
+  j.use(registerCustomMethods);
   // Extract any options for this specific transformer
   // (passed in via cli: `--element="div"` or third argument in tests)
   const { element, property } = options;
   // Convert to AST-tree
-  return j(file.source)
-    .findJSXElements(element)
-    .find(j.JSXAttribute, {
-      name: {
-        type: 'JSXIdentifier',
-        name: property,
-      },
-    })
-    // Remove property (key + value in this case) 
-    .remove()
-    // Convert back to source file. Trailingcomma option
-    // depends on setup, prettier etc how the output should be.
-    // Can make a differens in tests as input and output 
-    // are diffed as snapshots
-    .toSource(defaultSourceConfig);
+  return (
+    j(file.source)
+      .findJSXElementProperty(element, property)
+      // Remove property (key + value in this case)
+      .remove()
+      // Convert back to source file. Trailingcomma option
+      // depends on setup, prettier etc how the output should be.
+      // Can make a differens in tests as input and output
+      // are diffed as snapshots
+      .toSource(defaultSourceConfig)
+  );
 }
